@@ -60,48 +60,52 @@ export const BookModal: React.FC<BookModalProps> = ({ book, onClose }) => {
 
               <div className="grid gap-4">
                 {/* Physical Option */}
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 text-primary rounded-lg">
-                      <BookIcon className="w-6 h-6" />
+                {book.buyLinkPhysical && (
+                  <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-primary/10 text-primary rounded-lg">
+                        <BookIcon className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-text text-lg">Livro Físico</div>
+                        <div className="text-sm text-text/60">Capa comum, papel padrão</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-bold text-text text-lg">Livro Físico</div>
-                      <div className="text-sm text-text/60">Capa comum, papel padrão</div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-primary">{book.pricePhysical}</div>
+                      <a 
+                        href={book.buyLinkPhysical}
+                        className="inline-block mt-1 text-sm font-bold text-white bg-primary px-4 py-2 rounded-full hover:bg-primary/90 transition-colors"
+                      >
+                        Comprar
+                      </a>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-primary">{book.pricePhysical}</div>
-                    <a 
-                      href={book.buyLinkPhysical}
-                      className="inline-block mt-1 text-sm font-bold text-white bg-primary px-4 py-2 rounded-full hover:bg-primary/90 transition-colors"
-                    >
-                      Comprar
-                    </a>
-                  </div>
-                </div>
+                )}
 
                 {/* E-book Option */}
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-100 hover:border-accent/20 hover:shadow-md transition-all">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-accent/10 text-accent rounded-lg">
-                      <Tablet className="w-6 h-6" />
+                {book.buyLinkEbook && (
+                  <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-100 hover:border-accent/20 hover:shadow-md transition-all">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-accent/10 text-accent rounded-lg">
+                        <Tablet className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-text text-lg">E-book Digital</div>
+                        <div className="text-sm text-text/60">PDF, EPUB e MOBI</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-bold text-text text-lg">E-book Digital</div>
-                      <div className="text-sm text-text/60">PDF, EPUB e MOBI</div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-accent">{book.priceEbook}</div>
+                      <a 
+                        href={book.buyLinkEbook}
+                        className="inline-block mt-1 text-sm font-bold text-primary border border-primary px-4 py-2 rounded-full hover:bg-primary/5 transition-colors"
+                      >
+                        Comprar
+                      </a>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-accent">{book.priceEbook}</div>
-                    <a 
-                      href={book.buyLinkEbook}
-                      className="inline-block mt-1 text-sm font-bold text-primary border border-primary px-4 py-2 rounded-full hover:bg-primary/5 transition-colors"
-                    >
-                      Comprar
-                    </a>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
 

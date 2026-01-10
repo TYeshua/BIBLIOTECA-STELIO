@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, X, Mail, Instagram, MessageCircle } from 'lucide-react';
+import { BookOpen, X, Instagram, MessageCircle } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);

@@ -5,7 +5,9 @@ export interface Book {
   pricePhysical: string; // Mantido para mostrar valor, mesmo sem checkout direto
   priceEbook: string;    // Mantido para mostrar valor
   coverUrl: string;
-  amazonUrl: string;
+  amazonUrl: string; // Link genérico (fallback)
+  buyLinkPhysical?: string; // Novo (Opcional)
+  buyLinkEbook?: string;    // Novo (Opcional)
   samplePdfUrl: string | null;
   format: string; // "eBook Kindle", "Capa Comum", etc
   isFeatured: boolean;
@@ -20,6 +22,8 @@ export const booksData: Book[] = [
     priceEbook: "R$ 24,90",
     coverUrl: "./casamento.png",
     amazonUrl: "https://www.amazon.com.br/dp/B0GF38MN2L",
+    buyLinkPhysical: "https://www.amazon.com.br/dp/B0GF38MN2L",
+    buyLinkEbook: "https://www.amazon.com.br/dp/B0GF38MN2L",
     samplePdfUrl: "/amostra_segredos.pdf",
     format: "Capa Comum & Kindle",
     isFeatured: true,
@@ -32,6 +36,8 @@ export const booksData: Book[] = [
     priceEbook: "R$ ----",
     coverUrl: "./hermeneutica.png",
     amazonUrl: "https://www.amazon.com.br/dp/B0GF36VN6J",
+    buyLinkPhysical: "https://www.amazon.com.br/dp/B0GF36VN6J",
+    buyLinkEbook: "https://www.amazon.com.br/dp/B0GF36VN6J",
     samplePdfUrl: "/amostra_hermeneutica.pdf",
     format: "Capa Comum",
     isFeatured: false,
@@ -44,10 +50,10 @@ export const booksData: Book[] = [
     priceEbook: "R$ ----",
     coverUrl: "./redacao.png",
     amazonUrl: "https://www.amazon.com.br/dp/B0GG56DTYW",
+    buyLinkPhysical: "https://www.amazon.com.br/dp/B0GG56DTYW",
+    buyLinkEbook: "https://www.amazon.com.br/dp/B0GG56DTYW",
     samplePdfUrl: "/amostra_redacao.pdf",
     format: "Material Didático",
     isFeatured: false,
   },
-
-  
 ];
