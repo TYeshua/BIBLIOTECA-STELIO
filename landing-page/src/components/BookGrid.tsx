@@ -1,16 +1,19 @@
 import React from 'react';
 import type { Book } from '../data/booksData';
 import { BookCard } from './BookCard';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface BookGridProps {
   books: Book[];
 }
 
 export const BookGrid: React.FC<BookGridProps> = ({ books }) => {
+  const { elementRef, isVisible } = useScrollReveal(0.1);
+
   return (
-    <section id="livros" className="py-20 bg-white">
+    <section id="livros" ref={elementRef} className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl font-serif font-bold text-primary mb-4">
             Biblioteca do Autor
           </h2>
@@ -21,11 +24,16 @@ export const BookGrid: React.FC<BookGridProps> = ({ books }) => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          {books.map((book) => (
-            <BookCard 
-              key={book.id} 
-              book={book} 
-            />
+          {books.map((book, index) => (
+            <div 
+              key={book.id}
+              className={`transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <BookCard 
+                book={book} 
+              />
+            </div>
           ))}
         </div>
       </div>

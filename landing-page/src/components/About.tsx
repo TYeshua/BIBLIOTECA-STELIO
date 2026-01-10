@@ -1,16 +1,19 @@
 import React from 'react';
 import { Quote } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const About: React.FC = () => {
+  const { elementRef, isVisible } = useScrollReveal(0.2);
+
   return (
-    <section id="sobre" className="py-20 bg-secondary relative overflow-hidden">
+    <section id="sobre" ref={elementRef} className="py-20 bg-secondary relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-accent blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+      <div className={`max-w-7xl mx-auto px-4 md:px-8 relative z-10 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           
           {/* Image Side */}
@@ -40,7 +43,7 @@ export const About: React.FC = () => {
               </p>
             </div>
 
-            <div className="space-y-4 text-text/70 leading-relaxed">
+            <div className="space-y-4 text-text/70 leading-relaxed text-justify">
               <p>
                 Stélio Thauassu Rabelo Ferreira nasceu em Salinópolis, no Pará, e estudou durante toda a vida em Belém. Formado em Letras, pela Unama, fez especialização também em Letras, na UFPA; mestrado em Filosofia Cristã, pela, FATECBA; mestrado e doutorado em Letras, pela Universidade de Assunção, no Paraguai. Atua como professor de Língua inglesa há mais de 20 anos, na rede estadual de educação de Salinópolis.
               </p>

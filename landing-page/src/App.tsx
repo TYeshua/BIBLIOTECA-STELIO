@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { BookGrid } from './components/BookGrid';
 import { Footer } from './components/Footer';
+
 import { booksData } from './data/booksData';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
   const otherBooks = booksData.filter(book => book.id !== featuredBook.id);
 
   return (
-    <div className="min-h-screen bg-secondary font-sans text-text">
+    <div className="min-h-screen bg-secondary font-sans text-text md:pb-0">
       <Header />
       <main>
         <Hero book={featuredBook} />
@@ -19,6 +20,7 @@ function App() {
         <About />
       </main>
       <Footer />
+
     </div>
   );
 }

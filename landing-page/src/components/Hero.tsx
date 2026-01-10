@@ -8,33 +8,33 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ book }) => {
   return (
-    <section id="lancamento" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-secondary to-rose-100/50">
+    <section id="lancamento" className="relative min-h-screen w-full flex items-center pt-24 pb-12 overflow-hidden bg-gradient-to-b from-secondary to-rose-100/50">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 blur-3xl rounded-l-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-accent/10 blur-3xl rounded-r-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
         
         {/* Text Content */}
-        <div className="space-y-8 text-center md:text-left">
+        <div className="space-y-6 md:space-y-8 text-center md:text-left order-2 md:order-1">
           
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-primary leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold text-primary leading-tight">
             {book.title}
           </h1>
           
-          <p className="text-lg md:text-xl text-text/80 leading-relaxed max-w-xl mx-auto md:mx-0">
+          <p className="text-base md:text-xl text-text/80 leading-relaxed max-w-xl mx-auto md:mx-0">
             {book.description}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2 md:pt-4">
             {/* Amazon Button (Primary) */}
             <a 
               href={book.amazonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group px-8 py-4 bg-primary text-white text-lg font-serif rounded-full shadow-xl hover:shadow-2xl hover:bg-yellow-600 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3"
+              className="group px-8 py-4 bg-primary text-white text-lg font-serif rounded-full shadow-[0_0_20px_rgba(155,27,48,0.3)] hover:shadow-[0_0_30px_rgba(155,27,48,0.6)] hover:bg-[#8a182a] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 w-full sm:w-auto"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingCart className="w-5 h-5 animate-pulse" />
               <span>Comprar na Amazon</span>
               <ExternalLink className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -44,9 +44,8 @@ export const Hero: React.FC<HeroProps> = ({ book }) => {
                 href={book.samplePdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-white text-primary border-2 border-primary text-lg font-serif rounded-full shadow-lg hover:bg-gray-50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3"
+                className="group px-8 py-4 bg-white text-primary border-2 border-primary text-lg font-serif rounded-full shadow-lg hover:bg-gray-50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 w-full sm:w-auto"
               >
-                {/* Ícone de livro aberto para representar leitura */}
                  <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   width="24" 
@@ -70,28 +69,30 @@ export const Hero: React.FC<HeroProps> = ({ book }) => {
         </div>
 
         {/* Book Cover Visual */}
-        <a 
-          href={book.amazonUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative group perspective-1000 cursor-pointer outline-none block"
-        >
-          <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full transform scale-90 translate-y-10 group-hover:scale-100 transition-transform duration-700" />
-          <div className="relative transform rotate-y-12 group-hover:rotate-y-0 transition-transform duration-700 ease-out">
-            <img 
-              src={book.coverUrl} 
-              alt={`Capa do livro ${book.title}`}
-              className="w-full max-w-md mx-auto rounded-lg shadow-2xl border-4 border-white"
-            />
-            {/* Overlay Hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <div className="bg-black/60 backdrop-blur-sm text-white px-6 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                <Plus className="w-5 h-5" />
-                <span className="font-medium">Comprar na Amazon</span>
+        <div className="order-1 md:order-2 flex justify-center perspective-1000">
+          <a 
+            href={book.amazonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative group cursor-pointer outline-none block animate-float w-3/4 md:w-full max-w-md"
+          >
+            <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full transform scale-90 translate-y-10 group-hover:scale-100 transition-transform duration-700" />
+            <div className="relative transform rotate-y-12 group-hover:rotate-y-0 transition-transform duration-700 ease-out">
+              <img 
+                src={book.coverUrl} 
+                alt={`Capa do livro ${book.title}`}
+                className="w-full rounded-lg shadow-2xl border-4 border-white"
+              />
+              {/* Overlay Hint */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="bg-black/60 backdrop-blur-sm text-white px-6 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                  <Plus className="w-5 h-5" />
+                  <span className="font-medium">Comprar na Amazon</span>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </section>
   );

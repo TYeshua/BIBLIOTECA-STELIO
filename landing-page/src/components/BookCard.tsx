@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ShoppingCart, ExternalLink, BookOpen } from 'lucide-react';
 import type { Book } from '../data/booksData';
 
@@ -7,6 +7,14 @@ interface BookCardProps {
 }
 
 export const BookCard: React.FC<BookCardProps> = ({ book }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+  const isLongDescription = book.description.length > 200;
+
+  const toggleDescription = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div 
       className="group w-full text-left bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full relative"
@@ -36,9 +44,18 @@ export const BookCard: React.FC<BookCardProps> = ({ book }) => {
         <h3 className="text-xl font-serif font-bold text-primary mb-2 line-clamp-2 group-hover:text-accent transition-colors">
           {book.title}
         </h3>
-        <p className="text-text/70 text-sm mb-4 line-clamp-3 flex-grow">
+        <p className={`text-text/70 text-justify text-sm mb-2 ${isExpanded ? '' : 'line-clamp-3'} flex-grow transition-all duration-300`}>
           {book.description}
         </p>
+        
+        {isLongDescription && (
+          <button 
+            onClick={toggleDescription}
+            className="text-primary text-sm font-bold hover:text-accent transition-colors mb-4 self-start focus:outline-none"
+          >
+            {isExpanded ? 'Ler menos' : 'Ler mais'}
+          </button>
+        )}
         
         <div className="mt-auto pt-4 border-t border-gray-100 w-full flex flex-col gap-3">
             <a 
