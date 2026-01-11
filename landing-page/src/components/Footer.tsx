@@ -1,7 +1,11 @@
 import React from 'react';
 import { Instagram, MessageCircle, BookOpen, Code2 } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+export interface FooterProps {
+  onNavigate: (page: 'home' | 'thoughts') => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-primary text-white py-12 border-t border-white/10 relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8 md:mb-0">
@@ -22,16 +26,17 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <h3 className="font-serif font-bold text-lg text-accent">Navegação</h3>
             <ul className="space-y-2 text-white/70">
+              <li><button onClick={() => onNavigate('home')} className="hover:text-white transition-colors">Home</button></li>
+              <li><button onClick={() => onNavigate('thoughts')} className="hover:text-white transition-colors">Pensamentos</button></li>
               <li><a href="#lancamento" className="hover:text-white transition-colors">Lançamento</a></li>
               <li><a href="#livros" className="hover:text-white transition-colors">Livros</a></li>
               <li><a href="#sobre" className="hover:text-white transition-colors">Sobre o Autor</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
             </ul>
           </div>
 
           {/* Social */}
           <div className="space-y-4">
-            <h3 className="font-serif font-bold text-lg text-accent">Contato</h3>
+            <h3 className="font-serif font-bold text-lg text-accent">Contato para Palestras</h3>
             <div className="flex gap-4">
               <a 
                 href="https://wa.me/559185390380" 

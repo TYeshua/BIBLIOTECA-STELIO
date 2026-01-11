@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { BookOpen, X, Instagram, MessageCircle } from 'lucide-react';
 
-export const Header: React.FC = () => {
+export interface HeaderProps {
+  onNavigate: (page: 'home' | 'thoughts') => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const toggleContact = () => setIsContactOpen(!isContactOpen);
@@ -10,15 +14,22 @@ export const Header: React.FC = () => {
     <>
       <header className="w-full py-6 px-4 md:px-8 bg-secondary/80 backdrop-blur-md fixed top-0 z-50 border-b border-primary/10">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2 text-primary">
+          <button 
+            onClick={() => onNavigate('home')}
+            className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
+          >
             <BookOpen className="w-8 h-8" />
             <span className="font-serif text-2xl font-bold tracking-wide">Stélio Thauassu</span>
-          </div>
+          </button>
+          
           <nav className="hidden md:flex gap-8 text-text/80 font-medium">
+            <button onClick={() => onNavigate('home')} className="hover:text-primary transition-colors">Home</button>
+            <button onClick={() => onNavigate('thoughts')} className="hover:text-primary transition-colors">Pensamentos</button>
             <a href="#lancamento" className="hover:text-primary transition-colors">Lançamento</a>
             <a href="#livros" className="hover:text-primary transition-colors">Livros</a>
             <a href="#sobre" className="hover:text-primary transition-colors">Sobre</a>
           </nav>
+
           <button 
             onClick={toggleContact}
             className="px-6 py-2 bg-primary text-white font-serif rounded-full hover:bg-red-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -39,7 +50,7 @@ export const Header: React.FC = () => {
               <X className="w-6 h-6" />
             </button>
             
-            <h3 className="font-serif text-2xl font-bold text-center mb-8 text-primary">Entre em Contato</h3>
+            <h3 className="font-serif text-2xl font-bold text-center mb-8 text-primary">Contato para Palestras</h3>
             
             <div className="space-y-4">
               <a 
