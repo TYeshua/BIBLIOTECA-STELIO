@@ -5,7 +5,6 @@ import { About } from './components/About';
 import { BookGrid } from './components/BookGrid';
 import { Footer } from './components/Footer';
 import { ThoughtsPage } from './pages/ThoughtsPage';
-import { MobileStickyBar } from './components/MobileStickyBar';
 
 import { booksData } from './data/booksData';
 
@@ -45,11 +44,6 @@ function App() {
             <About />
           </main>
           <Footer onNavigate={handleNavigate} />
-          {/* Sticky Bar shows only on Home */}
-          <MobileStickyBar 
-            price={featuredBook.pricePhysical} 
-            link={featuredBook.amazonUrl} 
-          />
         </>
       ) : (
         <ThoughtsPage onBack={() => handleNavigate('home')} />
