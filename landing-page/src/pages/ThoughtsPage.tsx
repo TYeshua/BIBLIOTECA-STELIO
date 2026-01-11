@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ArrowLeft, Quote, Feather, Star, Minus } from 'lucide-react';
 import { thoughts, type Thought } from '../data/thoughts';
 import { useScrollReveal } from '../hooks/useScrollReveal';
