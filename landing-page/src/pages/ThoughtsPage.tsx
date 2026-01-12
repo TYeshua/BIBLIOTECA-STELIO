@@ -130,17 +130,13 @@ const ThoughtItem = ({ thought, index }: { thought: Thought; index: number }) =>
           {renderContent()}
         </div>
 
-        {/* Footer do Pensamento (Data e Assinatura) */}
+       {/* Footer do Pensamento (Data e Assinatura) */}
         <div className={`mt-8 flex flex-col items-center justify-center gap-2 transition-opacity duration-1000 delay-300 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}>
            {/* Assinatura "Fake" elegante */}
            <span className="font-serif italic text-lg text-gray-400">
-             — Stélio Thauassu
-           </span>
-           
-           <span className="font-sans text-[0.65rem] tracking-[0.3em] uppercase text-brand-gold/80">
-             {thought.date}
+             — {thought.author || "Stélio Thauassu"}
            </span>
         </div>
       </article>
